@@ -10,8 +10,6 @@ public class Affichage extends JFrame {
 
     public Affichage(Question question){
 
-
-
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
 
