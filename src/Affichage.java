@@ -1,4 +1,7 @@
 import Questions.Question;
+import Questions.Types.QCM;
+import Questions.Types.RC;
+import Questions.Types.VF;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,11 +10,32 @@ public class Affichage extends JFrame {
 
     public Affichage(Question question){
 
+
+
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
 
         JPanel mainPan = question.Afficher();
-        frame.add(mainPan);
+
+        frame.add(mainPan, BorderLayout.NORTH);
+
+        switch (question.getEnonce().getClass().getName()){
+            case "Questions.Types.QCM":{
+                QCM enonce = (QCM) question.getEnonce();
+                frame.add(enonce.Afficher(), BorderLayout.CENTER);
+                break;
+            }
+            case "Questions.Types.VF":{
+                VF enonce = (VF) question.getEnonce();
+                frame.add(enonce.Afficher(), BorderLayout.CENTER);
+                break;
+            }
+            case "Questions.Types.RC":{
+                RC enonce = (RC) question.getEnonce();
+                frame.add(enonce.Afficher(), BorderLayout.CENTER);
+                break;
+            }
+        }
 
         this.pack();
 

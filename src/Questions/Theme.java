@@ -2,20 +2,12 @@ package Questions;
 
 public class Theme {
 
-    private String designation;
+    private String[] themes;
+    private int indicateur = -1;
 
-
-    public Theme(String designation) {
-        this.designation = designation;
+    public Theme(String[] themes) {
+        this.themes = themes;
     }
-
-    public String getDesignation() {
-        return designation;
-    }
-
-    public void ModifierTheme(String designation) {
-        this.designation = designation;
-    }
-
-    // TODO: SelectionnerTheme - SelectionnerCinqTheme - Afficher
 }
+
+// TODO: SelectionnerTheme - SelectionnerCinqTheme - Afficher
