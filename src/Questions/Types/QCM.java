@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class QCM {
+public class QCM extends JFrame{
 
     private String description;
     private String reponse1;
@@ -48,6 +48,13 @@ public class QCM {
 
     public String getBonneReponse() {
         return bonneReponse;
+    }
+
+    public boolean getReponse(){
+        if (rep4.isSelected()){
+            return true;
+        }
+        return false;
     }
 
     public JPanel Afficher(){
