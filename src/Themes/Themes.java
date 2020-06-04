@@ -17,10 +17,10 @@ public class Themes<T> {
         this.listequestion = new ListeQuestions<Question<T>>();
     }
 
-    public String getNom() {
-        return nom;
-    }
-
+    public String getNom() { return nom; }
+    public void setNom(String nom){this.nom=nom;}
+    public boolean getIndicateur(){return this.indicateur;}
+    public void setIndicateur(boolean bool){this.indicateur = bool;}
     public void ModifierTheme(String nom){this.nom = nom;}
     public String SelectionnerTheme(){
         this.indicateur= true;

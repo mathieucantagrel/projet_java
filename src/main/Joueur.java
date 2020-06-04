@@ -1,13 +1,14 @@
 package main;
 
+import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Joueur {
+public class Joueur{
     private static AtomicInteger id = new AtomicInteger(0);
     private int numero;
     private String nom;
     private int score;
-    private String etat;
+    private String etat;// etat en string pour les vérifier par equals. et pratique pour faire des comparators(peut être utile dans le dev de l'app)
 
     public Joueur(String nom) {
         this.numero = id.incrementAndGet();
@@ -21,10 +22,10 @@ public class Joueur {
     public String getNom() { return nom; }
     public void setNom(String nom) { this.nom = nom; }
     public int getScore() { return score; }
-    protected void setScore(int score) { this.score = score; }
+    public void setScore(int score) { this.score = score; }
     public String getEtat() { return etat; }
     protected void setEtat(String etat) { this.etat = etat; }
-
+    public void ajouter_point(int score){this.score+=score;}
     public Joueur saisir(){return this;}
     public void MAJScore(int score){this.setScore(score);}
     public void ChangerEtat(String etat){this.setEtat(etat);}
@@ -45,8 +46,5 @@ public class Joueur {
                 ", etat='" + etat + '\'' +
                 '}';
     }
-
-
-
 
 }

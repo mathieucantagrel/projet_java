@@ -1,0 +1,7 @@
+1
+Michael phelps a t il été champion  olympique?
+true
+
+2
+Michael phelps a t-il été vice-champion olympique à 14 ans?
+true
