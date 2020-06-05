@@ -15,7 +15,6 @@ import main.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -30,11 +29,11 @@ public class Eureka_front implements Cloneable{
     private Joueur joueur_en_cours;// Le joueur répondant à la question
     private int num_candidat = -1;// Numéro du joueur en cours (1,2,3 ou 4). Peut être mis en format random pour
     //Mettre un ordre aléatoire de chaque joueur pour le passage.
-    private int indexTheme=0;
-    private int niveauQuestion = 1;
+    private int indexTheme=0; //index du theme a choisir dans la liste de themes
+    private int niveauQuestion = 1; //niveau de la question qui va etre posee
     private int phase = 1;// variable de Phase.
-    private ArrayList<Themes> Phase2ListeThemes;
-    private int scoreQuestion = 2;
+    private ArrayList<Themes> Phase2ListeThemes; //liste des themes pour la phase 2
+    private int scoreQuestion = 2; //nombres de points par question
 
     //GRAPHISME
     private JFrame f;
@@ -103,7 +102,7 @@ public class Eureka_front implements Cloneable{
         f.setVisible(true);
         ValidRCButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {// Devellopement de chaque interaction des boutons.
+            public void actionPerformed(ActionEvent e) {// verification de reponse pour question RC
 
                 if(ReponseText.getText().toLowerCase().equals(reponse.toLowerCase()))
                 {
@@ -115,7 +114,7 @@ public class Eureka_front implements Cloneable{
 
             }
         });
-        Vrai.addActionListener(new ActionListener() {
+        Vrai.addActionListener(new ActionListener() { //reponse vrai pour question VF
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean vrai = true;
@@ -130,7 +129,7 @@ public class Eureka_front implements Cloneable{
 
             }
         });
-        Faux.addActionListener(new ActionListener() {
+        Faux.addActionListener(new ActionListener() { //reponse faux pour question VF
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean faux = false;
@@ -142,10 +141,9 @@ public class Eureka_front implements Cloneable{
 
                 reload_display_select_theme();
 
-
             }
         });
-        Proposition1Button.addActionListener(new ActionListener() {
+        Proposition1Button.addActionListener(new ActionListener() { //reponse 1 question QCM
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -156,7 +154,7 @@ public class Eureka_front implements Cloneable{
                 reload_display_select_theme();
             }
         });
-        Proposition2Button.addActionListener(new ActionListener() {
+        Proposition2Button.addActionListener(new ActionListener() { //reponse 2 question QCM
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -169,7 +167,7 @@ public class Eureka_front implements Cloneable{
 
             }
         });
-        Proposition3Button.addActionListener(new ActionListener() {
+        Proposition3Button.addActionListener(new ActionListener() { //reponse 3 quesiton QCM
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -182,7 +180,7 @@ public class Eureka_front implements Cloneable{
 
             }
         });
-        validerButton.addActionListener(new ActionListener() {
+        validerButton.addActionListener(new ActionListener() { //choix des pseudo au debut
             @Override
             public void actionPerformed(ActionEvent e) {
                 liste_candidat.get(0).setNom(JoueurtextArea1.getText());
@@ -195,7 +193,7 @@ public class Eureka_front implements Cloneable{
 
             }
         });
-        SelectThemeButton.addActionListener(new ActionListener() {
+        SelectThemeButton.addActionListener(new ActionListener() { //boutton pour passer a la question suivante
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -207,7 +205,7 @@ public class Eureka_front implements Cloneable{
             }
         });
 
-        FinPhaseButton.addActionListener(new ActionListener() {
+        FinPhaseButton.addActionListener(new ActionListener() { //bouton pour passer la phase suivante
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -215,9 +213,9 @@ public class Eureka_front implements Cloneable{
 
                     Phase2ListeThemes = new ArrayList<>();
 
-                    Collections.shuffle(liste_theme);
+                    Collections.shuffle(liste_theme); //randomzation des themes
 
-                    for (int i = 0; i < 6; i++) {
+                    for (int i = 0; i < 6; i++) { //ajout des 6 themes dans la nouvelle liste et dans la ComboBox
                         Phase2ListeThemes.add(liste_theme.get(i));
                         ChoixThemePhase2ComboBox.addItem(liste_theme.get(i).getNom());
                     }
@@ -227,13 +225,13 @@ public class Eureka_front implements Cloneable{
             }
         });
 
-        ValiderThemePhase2Button.addActionListener(new ActionListener() {
+        ValiderThemePhase2Button.addActionListener(new ActionListener() { //choix de theme durant la phase 2
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 int index=0;
 
-                for (int i=0; i<Phase2ListeThemes.size(); i++){
+                for (int i=0; i<Phase2ListeThemes.size(); i++){ //recuperation de l index du theme choisi
                     if (Phase2ListeThemes.get(i).getNom().equals(ChoixThemePhase2ComboBox.getSelectedItem())){
                         index = i;
                         break;
@@ -247,19 +245,19 @@ public class Eureka_front implements Cloneable{
     }
 
 
-    public void reload_display_select_theme()//Remettre en place la checkbox avec les thèmes choisis.
+    public void reload_display_select_theme()//affichage fenetre avant question : phase1->validation joueur | phase2-> choix d'un theme
     {
-        num_candidat++;
+        num_candidat++;//passage au joueur suivant
 
         if (phase==1) {
             try {
                 this.JoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
-            } catch (IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException e) { //si on depasse le nombre de joueur
                 num_candidat %= 4;
                 niveauQuestion++;
-                if (niveauQuestion == 4) {
+                if (niveauQuestion == 4) { //si chaque joueur a eu 1 question de chaque difficulté
                     AfficherScore();
-                    phase_de_jeu();
+                    phase_de_jeu(); //passage a la phase suivante
                     return;
                 }
                 this.JoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
@@ -268,19 +266,19 @@ public class Eureka_front implements Cloneable{
         }else if(phase==2){
             try {
                 this.NomJoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
-            }catch (IndexOutOfBoundsException e){
+            }catch (IndexOutOfBoundsException e){ //si on depasse le nombre de joueur
                 num_candidat%=3;
                 this.NomJoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
             }
-            if (Phase2ListeThemes.size()==0){
+            if (Phase2ListeThemes.size()==0){ //si tous les themes ont ete utilisé
                 AfficherScore();
-                phase_de_jeu();
+                phase_de_jeu(); //passage a la phase suivante
                 return;
             }
 
             this.f.setContentPane(Phase2SelectThemeJPanel);
         }
-        this.f.revalidate();
+        this.f.revalidate(); //recharge le JPannel
     }
 
     public void init()//Initialisation des checkbox, de la liste et lecture des fichiers pour les questions pour chaque liste de thèmes.
@@ -316,18 +314,19 @@ public class Eureka_front implements Cloneable{
         liste_candidat.add(3,liste_player.Selectionner_Joueur());
     }
 
-    public void phase_de_jeu()
+    public void phase_de_jeu() //passage a la phase suivante
     {
         phase++;
-        if (phase==1){
+        if (phase==1){ //fin phase 1 passage a la phase 2
             niveauQuestion=2;
             scoreQuestion=3;
-            FinPhase();
+            FinPhase(); //affichage des scores
         }else if(phase==2){
             scoreQuestion=5;
-            FinPhase();
+            FinPhase(); //affichage des scores
         }
     }
+
     public void ajouter_theme(Themes theme,int nb) { this.liste_theme.add(nb,theme); }// Ajout d'un theme
 
     public void creation_question()// Lecture de fichier dans la classe ListeQuestion.
@@ -402,45 +401,44 @@ public class Eureka_front implements Cloneable{
         }
 
         if(phase==2){
-            reloadComboBox(n);
+            reloadComboBox(n); //recharge la comboBox de choix des themes durant la phase 2
         }
 
         this.f.setSize(500,175);
         this.f.revalidate();
 
-
     }
 
-    public void AfficherScore()   {
+    public void AfficherScore()   { //affichage des scores dans le terminal |temporaire|
         for (Joueur j : liste_candidat){
             System.out.println(j.getNom()+" "+j.getScore());
         }
     }
 
-    public void FinPhase(){
+    public void FinPhase(){ //affichage des scores et passage a la phase suivante
 
-        reloadScoreLabel();
+        reloadScoreLabel();//reset des labels affichage des scores
 
         ArrayList<Joueur> AffichageScoreList = (ArrayList<Joueur>) liste_candidat.clone();
 
-        Collections.sort(AffichageScoreList, new Comparator<Joueur>() {
+        Collections.sort(AffichageScoreList, new Comparator<Joueur>() { //tri des joueurs en fonction de leur score
             @Override
             public int compare(Joueur o1, Joueur o2) {
                 return Integer.compare(o1.getScore(), o2.getScore());
             }
         });
 
-        for (int i=0; i<AffichageScoreList.size(); i++) {
-            if (i==3){
+        for (int i=0; i<AffichageScoreList.size(); i++) { //affichage des scores
+            if (i==3){ //meilleur joueur
                 NomPremierLabel.setText(AffichageScoreList.get(i).getNom());
                 ScorePremierLabel.setText(String.valueOf(AffichageScoreList.get(i).getScore()));
-            }else if (i==2){
+            }else if (i==2){ //deuxieme joueur
                 NomDeuxiemeLabel.setText(AffichageScoreList.get(i).getNom());
                 ScoreDeuxiemeLabel.setText(String.valueOf(AffichageScoreList.get(i).getScore()));
-            }else if(i==1){
+            }else if(i==1){ //troisieme joueur
                 NomTroisiemeLabel.setText(AffichageScoreList.get(i).getNom());
                 ScoreTroisiemeLabel.setText(String.valueOf(AffichageScoreList.get(i).getScore()));
-                if (phase==3) {
+                if (phase==3) { //si passage a la phase 3 -> retirer joueur de la liste
                     for (int j = 0; j < liste_candidat.size(); j++) {
                         if (liste_candidat.get(j).getNom().equals(AffichageScoreList.get(i).getNom())) {
                             liste_candidat.remove(j);
@@ -448,11 +446,11 @@ public class Eureka_front implements Cloneable{
                         }
                     }
                 }
-            }else{
+            }else{ //quatrieme joueur
                 NomQuatriemeLabel.setText(AffichageScoreList.get(i).getNom());
                 ScoreQuatriemeLabel.setText(String.valueOf(AffichageScoreList.get(i).getScore()));
 
-                if (phase==2) {
+                if (phase==2) { //si passage a la phase 2 -> retirer joueur de la liste
                     for (int j = 0; j < liste_candidat.size(); j++) {
                         if (liste_candidat.get(j).getNom().equals(AffichageScoreList.get(i).getNom())) {
                             liste_candidat.remove(j);
@@ -463,9 +461,8 @@ public class Eureka_front implements Cloneable{
             }
         }
 
-        for (Joueur j : liste_candidat){
+        for (Joueur j : liste_candidat){ //reset des scores
             j.setScore(0);
-            System.out.println(j.getNom());
         }
 
         this.f.setContentPane(AffichageScorePhase1);
@@ -473,16 +470,16 @@ public class Eureka_front implements Cloneable{
 
     }
 
-    public void reloadComboBox(int index){
-        Phase2ListeThemes.remove(index);
+    public void reloadComboBox(int index){ //reload de la comboBox de choix des themes dans la phase 2
+        Phase2ListeThemes.remove(index); //retirer theme choisi pour le ne plus le choisir
 
-        ChoixThemePhase2ComboBox.removeAllItems();
-        for (Themes th : Phase2ListeThemes){
+        ChoixThemePhase2ComboBox.removeAllItems(); //vider la comboBox
+        for (Themes th : Phase2ListeThemes){ //remplissage de la comboBox avec les themes qui restent
             ChoixThemePhase2ComboBox.addItem(th.getNom());
         }
     }
 
-    public void reloadScoreLabel(){
+    public void reloadScoreLabel(){ //reset des labels pour afficher les scores
         NomPremierLabel.setText("");
         ScorePremierLabel.setText("");
 
