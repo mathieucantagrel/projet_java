@@ -1,0 +1,11 @@
+1
+La pizza a été inventée en Italie.
+true
+
+2
+Les îles Sandwich du Sud sont un archipel du Royaume-Uni.
+true
+
+3
+La barbe à papa a été inventé par un dentiste
+true

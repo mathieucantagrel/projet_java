@@ -1,7 +1,19 @@
+2
+Le Moyen Âge commença en 486 avec la chute de l’Empire romain.
+false
+
 1
-Michael phelps a t il été champion  olympique?
+La guerre de Cent Ans a duré 100 ans
+false
+
+3
+Les textes sur les sarcophages égyptiens racontaient la vie du défunt.
+false
+
+2
+Le gaz moutarde tue lentement ses victimes, généralement en quatre ou cinq semaines.
 true
 
 2
-Michael phelps a t-il été vice-champion olympique à 14 ans?
-true
+Le bractéate était une monnaie utilisé à l'Antiquité ?
+false

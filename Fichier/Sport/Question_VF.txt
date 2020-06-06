@@ -1,7 +1,11 @@
 1
-Michael phelps a t il été champion  olympique?
+Michael Phelps a-t-il été champion olympique?
 true
 
 2
-Michael phelps a t-il été vice-champion olympique à 14 ans?
+Michael Phelps a-t-il été vice-champion olympique à 14 ans?
 true
+
+3
+En rugby, l'Italie ne participe pas au tournoi des Six-Nations
+false

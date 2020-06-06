@@ -1,0 +1,11 @@
+2
+Le hibou est incapable de bouger les yeux; il doit bouger la tête pour modifier son angle de vision.
+true
+
+1
+Le chien ne voit qu'en noir et blanc.
+false
+
+3
+Le pingouin sait voler.
+true

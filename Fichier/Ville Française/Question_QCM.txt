@@ -1,5 +1,17 @@
-1
-Combien de List BDE se sont présentés cette année?
 3
-1
+Quelle ville n'est pas traversée par la Loire ?
+Dijon
+Orléans
+Nantes
+
 2
+Pour être considéré comme une ville en France il faut avoir
+2000 habitants
+1000 habitants
+5000 habitants
+
+1
+Sur le pont de quelle ville peut-on danser ?
+Avignon
+Marseille
+Toulouse

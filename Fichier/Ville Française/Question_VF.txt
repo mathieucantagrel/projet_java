@@ -1,7 +1,11 @@
+2
+Nantes a déjà été une capitale temporaire de la France.
+false
+
 1
-Michael phelps a t il été champion  olympique?
+Lourdes est la deuxième ville la plus visitée de France après Paris
 true
 
-2
-Michael phelps a t-il été vice-champion olympique à 14 ans?
+3
+La ville Arnac-la-Poste existe-elle ?
 true

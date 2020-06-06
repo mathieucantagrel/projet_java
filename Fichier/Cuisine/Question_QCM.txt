@@ -1,0 +1,17 @@
+2
+Un épi de maïs compte toujours un nombre :
+pair de rangées de grains
+impair de rangées de grains
+je ne sais pas je l'ai déjà mangé
+
+1
+Quelle couleur de carottes n'existe pas ?
+Verte
+Blanche
+Violette
+
+3
+Le record Guinness pour le plus grand nombre de boules de crème glacée sur un cornet est de :
+125
+68
+83

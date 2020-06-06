@@ -1,0 +1,11 @@
+1
+Narcisse ne pouvait s’empêcher de séduire tous ceux qu’il croisait.
+false
+
+2
+Aphrodite, déesse de l’amour, et Arès, dieu de la guerre, ont été amants.
+true
+
+3
+Zeus est le frère de Hadès et d'Héraclès
+false

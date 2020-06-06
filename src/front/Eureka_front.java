@@ -318,26 +318,48 @@ public class Eureka_front implements Cloneable{
 
     public void init()//Initialisation des checkbox, de la liste et lecture des fichiers pour les questions pour chaque liste de thèmes.
     {
-        Themes sport = new Themes("Sport");
-        Themes histoire = new Themes("Histoire");
-        Themes geographie = new Themes("Géographie");
-        Themes mathématique = new Themes("Mathématique");
-        Themes littérature = new Themes("Littérature");
-        Themes culture_générale = new Themes("Culture générale");
-        Themes informatique = new Themes("Informatique");
-        Themes automobile = new Themes("Automobile");
-        Themes politique = new Themes("Politique");
-        Themes ville_française = new Themes("Ville Française");
-        this.ajouter_theme(sport,0);
-        this.ajouter_theme(histoire,1);
-        this.ajouter_theme(geographie,2);
-        this.ajouter_theme(mathématique,3);
-        this.ajouter_theme(littérature,4);
-        this.ajouter_theme(culture_générale,5);
-        this.ajouter_theme(informatique,6);
-        this.ajouter_theme(automobile,7);
-        this.ajouter_theme(politique,8);
-        this.ajouter_theme(ville_française,9);
+//        Themes sport = new Themes("Sport");
+//        Themes histoire = new Themes("Histoire");
+//        Themes geographie = new Themes("Géographie");
+//        Themes mathématique = new Themes("Mathématique");
+//        Themes littérature = new Themes("Littérature");
+//        Themes culture_générale = new Themes("Culture générale");
+//        Themes informatique = new Themes("Informatique");
+//        Themes automobile = new Themes("Automobile");
+//        Themes politique = new Themes("Politique");
+//        Themes ville_française = new Themes("Ville Française");
+//        this.ajouter_theme(sport,0);
+//        this.ajouter_theme(histoire,1);
+//        this.ajouter_theme(geographie,2);
+//        this.ajouter_theme(mathématique,3);
+//        this.ajouter_theme(littérature,4);
+//        this.ajouter_theme(culture_générale,5);
+//        this.ajouter_theme(informatique,6);
+//        this.ajouter_theme(automobile,7);
+//        this.ajouter_theme(politique,8);
+//        this.ajouter_theme(ville_française,9);
+
+        Themes animaux = new Themes("Animaux");
+        Themes Automobile = new Themes("Automobile");
+        Themes Cuisine = new Themes("Cuisine");
+        Themes Geographie = new Themes("Géographie");
+        Themes Histoire = new Themes("Histoire");
+        Themes Langue_francaise = new Themes("Langue française");
+        Themes Mathematique = new Themes("Mathématique");
+        Themes Mythologie = new Themes("Myhtologie greco-romaine");
+        Themes Sport = new Themes("Sport");
+        Themes Ville_francaise = new Themes("Ville Française");
+        this.ajouter_theme(animaux, 0);
+        this.ajouter_theme(Automobile, 1);
+        this.ajouter_theme(Geographie, 2);
+        this.ajouter_theme(Cuisine, 3);
+        this.ajouter_theme(Histoire, 4);
+        this.ajouter_theme(Langue_francaise, 5);
+        this.ajouter_theme(Mathematique, 6);
+        this.ajouter_theme(Mythologie, 7);
+        this.ajouter_theme(Sport, 8);
+        this. ajouter_theme(Ville_francaise, 9);
+
 
 
         creation_question();

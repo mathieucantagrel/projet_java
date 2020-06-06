@@ -1,7 +1,11 @@
 1
-Michael phelps a t il été champion  olympique?
+Soixante-treize plus quatre-vingt-cinq égale cent cinquante-huit
 true
 
 2
-Michael phelps a t-il été vice-champion olympique à 14 ans?
+Thalès de Milet est un mathématicien romain.
+false
+
+3
+Le théorème de la boule chevelue existe.
 true

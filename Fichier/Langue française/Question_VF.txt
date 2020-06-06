@@ -1,0 +1,11 @@
+1 
+Le mot "tentacule" est féminin.
+false
+
+3
+Le mot badigoinces signifie « lèvres ».
+true
+
+2
+Le verbe yoyoter signifie « jouer au yoyo ».
+false

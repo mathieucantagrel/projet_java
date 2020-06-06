@@ -1,7 +1,11 @@
 1
-Michael phelps a t il été champion  olympique?
+Après la Russie, l’Ukraine est le plus grand pays d’Europe.
 true
 
 2
-Michael phelps a t-il été vice-champion olympique à 14 ans?
+C'est en Egypte que l'on trouve le plus de pyramides
+false
+
+3
+La France possède 8 frontières terrestres
 true

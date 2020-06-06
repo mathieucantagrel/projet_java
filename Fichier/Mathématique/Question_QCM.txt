@@ -1,5 +1,17 @@
-1
-Combien de List BDE se sont présentés cette année?
 3
-1
+La guerre de Cent Ans a duré :
+log(100)*29+8*4+3^3-1
+ln(e^60)*2-3*12
+log(50)*50-5*8+13
+
 2
+Jacky aime les pommes et il en a 10. Son jumeau maléfique cache subtilement 2 pommes et en mange une. Combien y a t-il de pommes ?
+9
+7
+10
+
+1
+(2+3*(2-4)*3)/2
+-8
+42
+10

@@ -1,7 +1,16 @@
 1
-Michael phelps a t il été champion  olympique?
+La DeLorean (Retour vers le futur) a connu un immense succès commercial.
+false
+
+2
+L'ancêtre de la voiture remonte à 1769.
+true
+
+3
+Le record de vitesse d’une voiture solaire est de 91,33 km/h.
 true
 
 2
-Michael phelps a t-il été vice-champion olympique à 14 ans?
-true
+Dès ses premiers films, James Bond conduisait une Aston Martin.
+false
+

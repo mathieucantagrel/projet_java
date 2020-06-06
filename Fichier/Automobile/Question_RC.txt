@@ -1,3 +1,15 @@
+1
+Quelle est la couleur typique des voitures de la marque Ferrari ?
+rouge
+
+2
+En quelle année est sorti le film Cars ?
+2006
+
+2
+Quel pilote (prenom + nom) a remporté 6 fois le titre de champion du monde en F1 ?
+lewis hamilton
+
 3
-Quelle est la couleur du ciel bleu?
-bleu
+Quel pilote (nom) espagnol connu pour ses performances en Formule 1 c'est reconverti à l'IndyCar et au WEC ?
+alonso

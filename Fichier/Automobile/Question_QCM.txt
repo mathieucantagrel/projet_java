@@ -1,5 +1,17 @@
-1
-Combien de List BDE se sont présentés cette année?
-3
-1
 2
+De quelle marque est la voiture : Espace ?
+Renault
+Citroën
+Fiat
+
+1
+Quel animal est l'effigie de Peugeot ?
+Lion
+Cheval
+Jaguar
+
+3
+Quel slogan n'est pas un slogan de la marque Volkswagen ?
+Volkswagen une voiture pleine d'histoire
+C'est pourtant facile de ne pas se tromper
+On peut douter de tout mais pas de sa Volkswagen

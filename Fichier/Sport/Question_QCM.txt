@@ -1,5 +1,17 @@
 1
-Combien de List BDE se sont présentés cette année?
-3
-1
+De quel pays est le tennisman Roger Federer ?
+Suisse
+Italie
+Allemagne
+
 2
+Que signifie le sigle : NBA ?
+National Basketball Association
+National Basketball of America
+National Basketball Arena
+
+3
+Quel sport est arbitré obligatoirement en français ?
+Escrime
+Golf
+Badminton
