@@ -2,11 +2,6 @@
 
 package front;
 
-import Question.Question;
-import Question.QCM;
-import Question.VF;
-import Question.RC;
-import Question.ListeQuestions;
 import Themes.*;
 
 import main.*;
@@ -272,38 +267,27 @@ public class Eureka_front implements Cloneable{
     {
         num_candidat++;//passage au joueur suivant
 
-        if (phase==1) {
-            try {
-                this.JoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
-            } catch (IndexOutOfBoundsException e) { //si on depasse le nombre de joueur
+        try{
+            this.JoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
+        }catch (IndexOutOfBoundsException e ){
+
+            if (phase==1){
                 num_candidat %= 4;
                 niveauQuestion++;
+
                 if (niveauQuestion == 4) { //si chaque joueur a eu 1 question de chaque difficulté
                     AfficherScore();
                     phase_de_jeu(); //passage a la phase suivante
                     return;
                 }
+
                 this.JoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
-            }
-            this.f.setContentPane(SelectThemeJpanel);
-        }else if(phase==2){
-            try {
-                this.NomJoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
-            }catch (IndexOutOfBoundsException e){ //si on depasse le nombre de joueur
+
+            }else if(phase==2){
                 num_candidat%=3;
                 this.NomJoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
-            }
-            if (Phase2ListeThemes.size()==0){ //si tous les themes ont ete utilisé
-                AfficherScore();
-                phase_de_jeu(); //passage a la phase suivante
-                return;
-            }
 
-            this.f.setContentPane(Phase2SelectThemeJPanel);
-        }else if (phase==3){
-            try{
-                this.JoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
-            }catch (IndexOutOfBoundsException e){
+            }else if(phase==3){
                 num_candidat%=2;
                 niveauQuestion++;
                 if (niveauQuestion==4){
@@ -315,9 +299,19 @@ public class Eureka_front implements Cloneable{
                     phase_de_jeu();
                     return;
                 }
-                this.JoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
             }
+        }
+
+        if (phase==1||phase==3){
             this.f.setContentPane(SelectThemeJpanel);
+        }else if (phase==2) {
+            this.f.setContentPane(Phase2SelectThemeJPanel);
+
+            if (Phase2ListeThemes.size() == 0) { //si tous les themes ont ete utilisé
+                AfficherScore();
+                phase_de_jeu(); //passage a la phase suivante
+                return;
+            }
         }
         this.f.revalidate(); //recharge le JPannel
     }
