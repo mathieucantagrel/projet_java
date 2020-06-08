@@ -1,5 +1,3 @@
-//TODO mettre en place un minuteur pour gerer les conflits
-
 package front;
 
 import Themes.*;
@@ -509,39 +507,28 @@ public class Eureka_front implements Cloneable{
 
         ArrayList<Joueur> AffichageScoreList = (ArrayList<Joueur>) liste_candidat.clone();
 
-        final int[] modification = {0};
-        do {
-            Collections.sort(AffichageScoreList, new Comparator<Joueur>() { //tri des joueurs en fonction de leur score
-                @Override
-                public int compare(Joueur o1, Joueur o2) {
-                    if (o1.getScore()!=o2.getScore())
-                    {
-                        modification[0]++;
-                        return Integer.compare(o1.getScore(), o2.getScore());
-                    }
-                    else if (o1.getChrono()[2]!=o2.getChrono()[2])
-                    {
-                        modification[0]++;
-                        return -Integer.compare(o1.getChrono()[2], o2.getChrono()[2]);
-                    }
-                    else if (o1.getChrono()[1]!=o1.getChrono()[1])
-                    {
-                        modification[0]++;
-                        return -Integer.compare(o1.getChrono()[1], o2.getChrono()[1]);
-                    }
-                    else if(o1.getChrono()[0]!=o1.getChrono()[0])
-                    {
-                        modification[0]++;
-                        return -Integer.compare(o1.getChrono()[0], o2.getChrono()[0]);
-                    }
-                    else
-                    {
-                        modification[0] = 0;
-                        return 0;
-                    }
+        Collections.sort(AffichageScoreList, new Comparator<Joueur>() { //tri des joueurs en fonction de leur score
+            @Override
+            public int compare(Joueur o1, Joueur o2) {
+                if (o1.getScore()!=o2.getScore())
+                {
+                    return Integer.compare(o1.getScore(), o2.getScore());
                 }
-            });
-        }while (modification[0] > 0);
+                if (o1.getChrono()[2]!=o2.getChrono()[2])
+                {
+                    return -Integer.compare(o1.getChrono()[2], o2.getChrono()[2]);
+                }
+                if (o1.getChrono()[1]!=(o2.getChrono()[1]))
+                {
+                    return -Integer.compare(o1.getChrono()[1], o2.getChrono()[1]);
+                }
+                if(o1.getChrono()[0]!=o2.getChrono()[0])
+                {
+                    return -Integer.compare(o1.getChrono()[0], o2.getChrono()[0]);
+                }
+                return 0;
+            }
+        });
 
 
         for (int i=0; i<AffichageScoreList.size(); i++) { //affichage des scores
