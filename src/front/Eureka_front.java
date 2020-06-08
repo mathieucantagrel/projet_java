@@ -30,6 +30,12 @@ public class Eureka_front implements Cloneable{
     private int scoreQuestion = 2; //nombres de points par question
     private ArrayList<Themes> Phase3ListeThemes;
 
+    private static int Minutes=0; //minute du chrono
+    private static int Secondes=0; //seconde du chrono
+    private static int Milisecondes=0; //milisecondes du chrono
+    private static boolean state=true;
+    private static int[] Chrono = new int[3];
+
     //GRAPHISME
     private JFrame f;
     private JPanel JpanelJeux;
@@ -83,6 +89,12 @@ public class Eureka_front implements Cloneable{
     private JLabel ScoreTroisiemeLabel;
     private JLabel NomQuatriemeLabel;
     private JLabel ScoreQuatriemeLabel;
+    private JLabel TempsPhase2Label;
+    private JLabel TempsPhase1Et3Label;
+    private JLabel TempsJoueur1Label;
+    private JLabel TempsJoueur2Label;
+    private JLabel TempsJoueur3Label;
+    private JLabel TempsJoueur4Label;
     private String reponse;
 
     public Eureka_front() {//initialisation d'un premier frame.
@@ -185,7 +197,6 @@ public class Eureka_front implements Cloneable{
 
                 reload_display_select_theme();
 
-
             }
         });
         SelectThemeButton.addActionListener(new ActionListener() { //boutton pour passer a la question suivante
@@ -265,6 +276,15 @@ public class Eureka_front implements Cloneable{
 
     public void reload_display_select_theme()//affichage fenetre avant question : phase1->validation joueur | phase2-> choix d'un theme
     {
+
+        state=false;
+
+        if (num_candidat!=-1){
+            liste_candidat.get(num_candidat).getChrono()[2]=Minutes;
+            liste_candidat.get(num_candidat).getChrono()[1]=Secondes;
+            liste_candidat.get(num_candidat).getChrono()[0]=Milisecondes;
+        }
+
         num_candidat++;//passage au joueur suivant
 
         try{
@@ -302,9 +322,15 @@ public class Eureka_front implements Cloneable{
             }
         }
 
+        String Temps = String.valueOf(liste_candidat.get(num_candidat).getChrono()[2])+":"+String.valueOf(liste_candidat.get(num_candidat).getChrono()[1])+":"+String.valueOf(liste_candidat.get(num_candidat).getChrono()[0]);
+
         if (phase==1||phase==3){
+            TempsPhase1Et3Label.setText(Temps);
             this.f.setContentPane(SelectThemeJpanel);
         }else if (phase==2) {
+
+            TempsPhase2Label.setText(Temps);
+
             this.f.setContentPane(Phase2SelectThemeJPanel);
 
             if (Phase2ListeThemes.size() == 0) { //si tous les themes ont ete utilisé
@@ -318,26 +344,6 @@ public class Eureka_front implements Cloneable{
 
     public void init()//Initialisation des checkbox, de la liste et lecture des fichiers pour les questions pour chaque liste de thèmes.
     {
-//        Themes sport = new Themes("Sport");
-//        Themes histoire = new Themes("Histoire");
-//        Themes geographie = new Themes("Géographie");
-//        Themes mathématique = new Themes("Mathématique");
-//        Themes littérature = new Themes("Littérature");
-//        Themes culture_générale = new Themes("Culture générale");
-//        Themes informatique = new Themes("Informatique");
-//        Themes automobile = new Themes("Automobile");
-//        Themes politique = new Themes("Politique");
-//        Themes ville_française = new Themes("Ville Française");
-//        this.ajouter_theme(sport,0);
-//        this.ajouter_theme(histoire,1);
-//        this.ajouter_theme(geographie,2);
-//        this.ajouter_theme(mathématique,3);
-//        this.ajouter_theme(littérature,4);
-//        this.ajouter_theme(culture_générale,5);
-//        this.ajouter_theme(informatique,6);
-//        this.ajouter_theme(automobile,7);
-//        this.ajouter_theme(politique,8);
-//        this.ajouter_theme(ville_française,9);
 
         Themes animaux = new Themes("Animaux");
         Themes Automobile = new Themes("Automobile");
@@ -346,7 +352,7 @@ public class Eureka_front implements Cloneable{
         Themes Histoire = new Themes("Histoire");
         Themes Langue_francaise = new Themes("Langue française");
         Themes Mathematique = new Themes("Mathématique");
-        Themes Mythologie = new Themes("Myhtologie greco-romaine");
+        Themes Mythologie = new Themes("Mythologie greco-romaine");
         Themes Sport = new Themes("Sport");
         Themes Ville_francaise = new Themes("Ville Française");
         this.ajouter_theme(animaux, 0);
@@ -409,6 +415,7 @@ public class Eureka_front implements Cloneable{
         Random rd = new Random();
         int nb = 0;
         if (phase==1||phase==3) {
+            System.out.println(this.liste_theme.get(n).getNom());
             do {
                 nb = rd.nextInt(this.liste_theme.get(n).SaisirListeQuestions().GetListeQuestion().size());
             } while (this.liste_theme.get(n).SaisirListeQuestions().SelectionnerQuestion(nb).getLevel() != niveauQuestion);
@@ -474,6 +481,9 @@ public class Eureka_front implements Cloneable{
             reloadComboBox(n); //recharge la comboBox de choix des themes durant la phase 2
         }
 
+        state=true;
+        StartChrono(joueur_en_cours.getChrono());
+
         this.f.setSize(500,175);
         this.f.revalidate();
 
@@ -494,7 +504,10 @@ public class Eureka_front implements Cloneable{
         Collections.sort(AffichageScoreList, new Comparator<Joueur>() { //tri des joueurs en fonction de leur score
             @Override
             public int compare(Joueur o1, Joueur o2) {
-                return Integer.compare(o1.getScore(), o2.getScore());
+                if (o1.getScore()!=o2.getScore()){ return Integer.compare(o1.getScore(), o2.getScore());}
+                if (o1.getChrono()[2]!=o2.getChrono()[2]){ return Integer.compare(o1.getChrono()[2], o2.getChrono()[2]);}
+                if (o1.getChrono()[1]!=o1.getChrono()[1]){ return Integer.compare(o1.getChrono()[1], o2.getChrono()[1]);}
+                return Integer.compare(o1.getChrono()[0], o2.getChrono()[0]);
             }
         });
 
@@ -502,12 +515,15 @@ public class Eureka_front implements Cloneable{
             if (i==AffichageScoreList.size()-1){ //meilleur joueur
                 NomPremierLabel.setText(AffichageScoreList.get(i).getNom());
                 ScorePremierLabel.setText(String.valueOf(AffichageScoreList.get(i).getScore()));
+                TempsJoueur1Label.setText(AffichageChrono(i, AffichageScoreList));
             }else if (i==AffichageScoreList.size()-2){ //deuxieme joueur
                 NomDeuxiemeLabel.setText(AffichageScoreList.get(i).getNom());
                 ScoreDeuxiemeLabel.setText(String.valueOf(AffichageScoreList.get(i).getScore()));
+                TempsJoueur2Label.setText(AffichageChrono(i, AffichageScoreList));
             }else if(i==AffichageScoreList.size()-3){ //troisieme joueur
                 NomTroisiemeLabel.setText(AffichageScoreList.get(i).getNom());
                 ScoreTroisiemeLabel.setText(String.valueOf(AffichageScoreList.get(i).getScore()));
+                TempsJoueur3Label.setText(AffichageChrono(i, AffichageScoreList));
                 if (phase==3) { //si passage a la phase 3 -> retirer joueur de la liste
                     for (int j = 0; j < liste_candidat.size(); j++) {
                         if (liste_candidat.get(j).getNom().equals(AffichageScoreList.get(i).getNom())) {
@@ -519,6 +535,7 @@ public class Eureka_front implements Cloneable{
             }else if(phase==2){ //quatrieme joueur
                 NomQuatriemeLabel.setText(AffichageScoreList.get(i).getNom());
                 ScoreQuatriemeLabel.setText(String.valueOf(AffichageScoreList.get(i).getScore()));
+                TempsJoueur4Label.setText(AffichageChrono(i, AffichageScoreList));
 
                 for (int j = 0; j < liste_candidat.size(); j++) {
                     if (liste_candidat.get(j).getNom().equals(AffichageScoreList.get(i).getNom())) {
@@ -539,6 +556,10 @@ public class Eureka_front implements Cloneable{
 
     }
 
+    public String AffichageChrono(int i, ArrayList<Joueur> AffichageScoreList){
+        return String.valueOf(AffichageScoreList.get(i).getChrono()[2])+":"+String.valueOf(AffichageScoreList.get(i).getChrono()[1])+":"+String.valueOf(AffichageScoreList.get(i).getChrono()[0]);
+    }
+
     public void reloadComboBox(int index){ //reload de la comboBox de choix des themes dans la phase 2
         Phase2ListeThemes.remove(index); //retirer theme choisi pour le ne plus le choisir
 
@@ -551,14 +572,67 @@ public class Eureka_front implements Cloneable{
     public void reloadScoreLabel(){ //reset des labels pour afficher les scores
         NomPremierLabel.setText("");
         ScorePremierLabel.setText("");
+        TempsJoueur1Label.setText("");
 
         NomDeuxiemeLabel.setText("");
         ScoreDeuxiemeLabel.setText("");
+        TempsJoueur2Label.setText("");
 
         NomTroisiemeLabel.setText("");
         ScoreTroisiemeLabel.setText("");
+        TempsJoueur3Label.setText("");
 
         NomQuatriemeLabel.setText("");
         ScoreQuatriemeLabel.setText("");
+        TempsJoueur4Label.setText("");
+    }
+
+    private void StartChrono(int[] ChronoJoueur){
+
+        Milisecondes=ChronoJoueur[0];
+        Secondes=ChronoJoueur[1];
+        Minutes=ChronoJoueur[2];
+
+        Thread t = new Thread(){
+            public void run(){
+
+                for (;;){
+
+                    if (state){
+
+                        try{
+                            sleep(1);
+
+                            if (Milisecondes>500){
+                                Milisecondes=0;
+                                Secondes++;
+                            }
+                            if (Secondes>60){
+                                Secondes=0;
+                                Minutes++;
+                            }
+                            if (Minutes>60){
+                                Minutes=0;
+                            }
+
+                            Chrono[0]=Milisecondes;
+                            Chrono[1]=Secondes;
+                            Chrono[2]=Minutes;
+
+                            String Temps = String.valueOf(Chrono[2])+":"+String.valueOf(Chrono[1])+":"+String.valueOf(Chrono[0]);
+                            System.out.println(Temps);
+                            Milisecondes++;
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }else{
+                        break;
+                    }
+
+                }
+            }
+        };
+        t.start();
     }
 }
