@@ -288,7 +288,15 @@ public class Eureka_front implements Cloneable{
         num_candidat++;//passage au joueur suivant
 
         try{
-            this.JoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
+            if(phase==2)
+            {
+                this.NomJoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
+            }
+            else
+            {
+                this.JoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
+            }
+
         }catch (IndexOutOfBoundsException e ){
 
             if (phase==1){
@@ -501,15 +509,40 @@ public class Eureka_front implements Cloneable{
 
         ArrayList<Joueur> AffichageScoreList = (ArrayList<Joueur>) liste_candidat.clone();
 
-        Collections.sort(AffichageScoreList, new Comparator<Joueur>() { //tri des joueurs en fonction de leur score
-            @Override
-            public int compare(Joueur o1, Joueur o2) {
-                if (o1.getScore()!=o2.getScore()){ return Integer.compare(o1.getScore(), o2.getScore());}
-                if (o1.getChrono()[2]!=o2.getChrono()[2]){ return Integer.compare(o1.getChrono()[2], o2.getChrono()[2]);}
-                if (o1.getChrono()[1]!=o1.getChrono()[1]){ return Integer.compare(o1.getChrono()[1], o2.getChrono()[1]);}
-                return Integer.compare(o1.getChrono()[0], o2.getChrono()[0]);
-            }
-        });
+        final int[] modification = {0};
+        do {
+            Collections.sort(AffichageScoreList, new Comparator<Joueur>() { //tri des joueurs en fonction de leur score
+                @Override
+                public int compare(Joueur o1, Joueur o2) {
+                    if (o1.getScore()!=o2.getScore())
+                    {
+                        modification[0]++;
+                        return Integer.compare(o1.getScore(), o2.getScore());
+                    }
+                    else if (o1.getChrono()[2]!=o2.getChrono()[2])
+                    {
+                        modification[0]++;
+                        return -Integer.compare(o1.getChrono()[2], o2.getChrono()[2]);
+                    }
+                    else if (o1.getChrono()[1]!=o1.getChrono()[1])
+                    {
+                        modification[0]++;
+                        return -Integer.compare(o1.getChrono()[1], o2.getChrono()[1]);
+                    }
+                    else if(o1.getChrono()[0]!=o1.getChrono()[0])
+                    {
+                        modification[0]++;
+                        return -Integer.compare(o1.getChrono()[0], o2.getChrono()[0]);
+                    }
+                    else
+                    {
+                        modification[0] = 0;
+                        return 0;
+                    }
+                }
+            });
+        }while (modification[0] > 0);
+
 
         for (int i=0; i<AffichageScoreList.size(); i++) { //affichage des scores
             if (i==AffichageScoreList.size()-1){ //meilleur joueur
@@ -549,6 +582,8 @@ public class Eureka_front implements Cloneable{
 
         for (Joueur j : liste_candidat){ //reset des scores
             j.setScore(0);
+            int[] chrono = {0,0,0};
+            j.setChrono(chrono);
         }
 
         this.f.setContentPane(AffichageScorePhase1);
@@ -619,8 +654,6 @@ public class Eureka_front implements Cloneable{
                             Chrono[1]=Secondes;
                             Chrono[2]=Minutes;
 
-                            String Temps = String.valueOf(Chrono[2])+":"+String.valueOf(Chrono[1])+":"+String.valueOf(Chrono[0]);
-                            System.out.println(Temps);
                             Milisecondes++;
 
                         } catch (Exception e) {
@@ -635,4 +668,9 @@ public class Eureka_front implements Cloneable{
         };
         t.start();
     }
+
+    //TODO Phase 2 : Les questions ne sont pas toujours prises dans le thème choisi
+    //TODO Phase 3 : le nom des joueurs est cassé
+    //TODO Resize la taille des fenetres selon la taille de la question
+    //TODO Reset le temps des joueurs entre chaque phase
 }
