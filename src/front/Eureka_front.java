@@ -206,7 +206,6 @@ public class Eureka_front implements Cloneable{
                 }else if (phase==3){
                     for (int index=0; index<liste_theme.size(); index++){
                         if (liste_theme.get(index).getNom().equals(Phase3ListeThemes.get(0).getNom())){
-                            AfficherScore();
                             afficher_bonne_question(index);
                             break;
                         }
@@ -265,15 +264,6 @@ public class Eureka_front implements Cloneable{
                     }
                 }
 
-                System.out.println("\n\n\nthemes restants");
-                for (Themes th : Phase2ListeThemes){
-                    System.out.println(th.getNom());
-                }
-
-                System.out.println("\n\n"+ChoixThemePhase2ComboBox.getSelectedItem());
-//                System.out.println(Phase2ListeThemes.get(index).getNom());
-                System.out.println(liste_theme.get(index).getNom());
-
                 afficher_bonne_question(index);
 
             }
@@ -311,7 +301,6 @@ public class Eureka_front implements Cloneable{
                 niveauQuestion++;
 
                 if (niveauQuestion == 4) { //si chaque joueur a eu 1 question de chaque difficulté
-                    AfficherScore();
                     phase_de_jeu(); //passage a la phase suivante
                     return;
                 }
@@ -330,10 +319,10 @@ public class Eureka_front implements Cloneable{
                     Phase3ListeThemes.remove(0);
                 }
                 if (Phase3ListeThemes.size()==0){
-                    AfficherScore();
                     phase_de_jeu();
                     return;
                 }
+                this.JoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
             }
         }
 
@@ -349,7 +338,6 @@ public class Eureka_front implements Cloneable{
             this.f.setContentPane(Phase2SelectThemeJPanel);
 
             if (Phase2ListeThemes.size() == 0) { //si tous les themes ont ete utilisé
-                AfficherScore();
                 phase_de_jeu(); //passage a la phase suivante
                 return;
             }
@@ -388,6 +376,8 @@ public class Eureka_front implements Cloneable{
         liste_candidat.add(1,liste_player.Selectionner_Joueur());
         liste_candidat.add(2,liste_player.Selectionner_Joueur());
         liste_candidat.add(3,liste_player.Selectionner_Joueur());
+
+        Collections.shuffle(liste_candidat);
     }
 
     public void phase_de_jeu() //passage a la phase suivante
@@ -504,15 +494,9 @@ public class Eureka_front implements Cloneable{
         state=true;
         StartChrono(joueur_en_cours.getChrono());
 
-        this.f.setSize(700,300);
+        this.f.setSize(900,300);
         this.f.revalidate();
 
-    }
-
-    public void AfficherScore()   { //affichage des scores dans le terminal |temporaire|
-        for (Joueur j : liste_candidat){
-            System.out.println(j.getNom()+" "+j.getScore());
-        }
     }
 
     public void FinPhase(){ //affichage des scores et passage a la phase suivante
@@ -586,6 +570,8 @@ public class Eureka_front implements Cloneable{
             int[] chrono = {0,0,0};
             j.setChrono(chrono);
         }
+
+        Collections.shuffle(liste_candidat);
 
         this.f.setContentPane(AffichageScorePhase1);
         this.f.revalidate();
@@ -676,6 +662,4 @@ public class Eureka_front implements Cloneable{
         t.start();
     }
 
-    //TODO Phase 3 : le nom des joueurs est cassé
-    //TODO Resize la taille des fenetres selon la taille de la question
 }
