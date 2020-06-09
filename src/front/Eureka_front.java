@@ -152,7 +152,6 @@ public class Eureka_front implements Cloneable{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
                 if (Proposition1Button.getText().equals(reponse)) {
                     liste_candidat.get(num_candidat).ajouter_point(scoreQuestion);
                 }
@@ -162,7 +161,6 @@ public class Eureka_front implements Cloneable{
         Proposition2Button.addActionListener(new ActionListener() { //reponse 2 question QCM
             @Override
             public void actionPerformed(ActionEvent e) {
-
 
                 if(Proposition2Button.getText().equals(reponse))
                 {
@@ -175,7 +173,6 @@ public class Eureka_front implements Cloneable{
         Proposition3Button.addActionListener(new ActionListener() { //reponse 3 quesiton QCM
             @Override
             public void actionPerformed(ActionEvent e) {
-
 
                 if(Proposition3Button.getText().equals(reponse))
                 {
@@ -326,6 +323,7 @@ public class Eureka_front implements Cloneable{
             }
         }
 
+
         String Temps = String.valueOf(liste_candidat.get(num_candidat).getChrono()[2])+":"+String.valueOf(liste_candidat.get(num_candidat).getChrono()[1])+":"+String.valueOf(liste_candidat.get(num_candidat).getChrono()[0]);
 
         if (phase==1||phase==3){
@@ -367,7 +365,7 @@ public class Eureka_front implements Cloneable{
         this.ajouter_theme(Mathematique, 6);
         this.ajouter_theme(Mythologie, 7);
         this.ajouter_theme(Sport, 8);
-        this. ajouter_theme(Ville_francaise, 9);
+        this.ajouter_theme(Ville_francaise, 9);
 
         creation_question();
         liste_candidat = new ArrayList<Joueur>(3);
@@ -402,6 +400,7 @@ public class Eureka_front implements Cloneable{
 
     public void creation_question()// Lecture de fichier dans la classe ListeQuestion.
     {
+
         for(int n=0;n<liste_theme.size();n++)
         {
             this.liste_theme.get(n).SaisirListeQuestions().charger_question_QCM(liste_theme.get(n).getNom());
