@@ -1,4 +1,4 @@
-package Question;
+package Projet.Question;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -35,7 +35,7 @@ public class Question <T> {
 
     @Override
     public String toString() {
-        return "Question{" +
+        return "Projet.Question{" +
                 "numero=" + numero +
                 ", level=" + level +
                 ", type=" + type.toString() +

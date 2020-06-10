@@ -1,10 +1,8 @@
-package Themes;
+package Projet.Themes;
 
 
-import Question.ListeQuestions;
-import Question.Question;
-
-import java.util.ArrayList;
+import Projet.Question.ListeQuestions;
+import Projet.Question.Question;
 
 public class Themes<T> {
     private String nom;
@@ -32,5 +30,5 @@ public class Themes<T> {
         System.out.println(this.indicateur);
     }
     public ListeQuestions<Question<T>> SaisirListeQuestions() { return this.listequestion; }
-    //public Themes Saisir(){return this;}
+    //public Projet.Themes Saisir(){return this;}
 }

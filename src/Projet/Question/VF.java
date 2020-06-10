@@ -1,4 +1,4 @@
-package Question;
+package Projet.Question;
 
 public class VF {
     private String question;

@@ -1,4 +1,4 @@
-package Question;
+package Projet.Question;
 
 import java.io.BufferedReader;
 import java.nio.file.Files;
@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.charset.Charset;
-import java.util.HashSet;
 
 public class ListeQuestions <T> {
     ArrayList<Question<T>> listeQuestion;

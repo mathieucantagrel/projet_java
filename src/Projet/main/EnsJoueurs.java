@@ -1,6 +1,5 @@
-package main;
+package Projet.main;
 
-import java.util.Comparator;
 import java.util.Random;
 import java.util.Vector;
 

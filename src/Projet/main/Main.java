@@ -1,6 +1,6 @@
-package main;
+package Projet.main;
 
-import menu.fonctionnalitees;
+import Projet.menu.fonctionnalitees;
 
 public class Main {
 

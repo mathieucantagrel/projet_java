@@ -1,11 +1,13 @@
-package Question;
-
-public class RC {
+package Projet.Question;
+import java.util.ArrayList;
+public class QCM {
     private String question;
+    private ArrayList<String> proposition;
     private String reponse;
 
-    public RC() {
+    public QCM() {
         this.question = "";
+        this.proposition = new ArrayList<String>(1);
         this.reponse = "";
     }
 
@@ -15,6 +17,14 @@ public class RC {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    public ArrayList<String> getProposition() {
+        return proposition;
+    }
+
+    public void setProposition(ArrayList<String> proposition) {
+        this.proposition = proposition;
     }
 
     public String getReponse() {
@@ -27,10 +37,10 @@ public class RC {
 
     @Override
     public String toString() {
-        return "RC{" +
+        return "QCM{" +
                 "question='" + question + '\'' +
+                ", proposition=" + proposition +
                 ", reponse='" + reponse + '\'' +
                 '}';
     }
-
 }

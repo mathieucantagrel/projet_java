@@ -1,9 +1,10 @@
-package main;
+package Projet.main;
 
-import java.util.Comparator;
+import Projet.Question.ListeQuestions;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Joueur{
+public class Joueur {
     private static AtomicInteger id = new AtomicInteger(0);
     private int numero;
     private String nom;
