@@ -4,6 +4,8 @@ import Themes.*;
 
 import main.*;
 
+import menu.*;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -307,7 +309,6 @@ public class Eureka_front implements Cloneable{
             }else if(phase==2){
                 num_candidat%=3;
                 this.NomJoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
-
             }else if(phase==3){
                 num_candidat%=2;
                 niveauQuestion++;
@@ -572,6 +573,10 @@ public class Eureka_front implements Cloneable{
 
         Collections.shuffle(liste_candidat);
 
+        if(phase==4){
+            FinJeu();
+        }
+
         this.f.setContentPane(AffichageScorePhase1);
         this.f.revalidate();
 
@@ -659,6 +664,16 @@ public class Eureka_front implements Cloneable{
             }
         };
         t.start();
+    }
+
+    private void FinJeu(){
+        FinPhaseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.dispose(); //ferme la fenetre
+                fonctionnalitees fonctionnalitees = new fonctionnalitees(); //ouvre le menu
+            }
+        });
     }
 
 }
