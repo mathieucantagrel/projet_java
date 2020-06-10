@@ -886,6 +886,8 @@ public class Eureka_front implements Cloneable {
         gbc.gridy = 2;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.ipadx = 500;
+        gbc.ipady = 5;
         RCJpanel.add(ReponseText, gbc);
         EnterPseudoJpanel = new JPanel();
         EnterPseudoJpanel.setLayout(new GridBagLayout());
@@ -1195,4 +1197,7 @@ public class Eureka_front implements Cloneable {
         return JpanelJeux;
     }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }
