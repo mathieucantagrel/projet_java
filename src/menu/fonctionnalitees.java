@@ -15,10 +15,13 @@ public class fonctionnalitees {
     private String ThemeChoisi;
     private Themes themes;
 
+    //Menu Principal
     private JFrame frame;
     private JButton lancerLeJeuButton;
     private JButton afficherLesThemesButton;
     private JPanel Menu;
+
+    //Affichage des themes
     private JButton retourButton;
     private JPanel AffichageThemes;
     private JButton animauxButton;
@@ -31,14 +34,19 @@ public class fonctionnalitees {
     private JButton mythologieGrecoRomaineButton;
     private JButton sportButton;
     private JButton villeFrançaiseButton;
+
+    //Choix du niveau de la question
     private JButton a1Button;
     private JButton a2Button;
     private JButton a3Button;
     private JPanel ChoixNiveau;
     private JPanel AffichageQuestion;
     private JButton retourButton2;
+
+    //Affichage questions pour niveau et theme choisi
     private JButton retourButton1;
     private JLabel AffichageQuestionLabel;
+    private JButton quitterButton;
 
     public fonctionnalitees() {
         this.frame = new JFrame();
@@ -50,13 +58,12 @@ public class fonctionnalitees {
 
         lancerLeJeuButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) { //lance le jeu
                 Eureka_front l = new Eureka_front();
                 l.init();//Lancement de l'application
-                frame.dispose();
+                frame.dispose(); //ferme la fenetre du menu
             }
         });
-
 
         afficherLesThemesButton.addActionListener(new ActionListener() {
             @Override
@@ -200,10 +207,16 @@ public class fonctionnalitees {
                 frame.revalidate();
             }
         });
+
+        quitterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
     }
 
-
-    public void AffichageChoixNiveau(){
+    public void AffichageChoixNiveau(){ //charge les questions pour le theme choisi
         themes.SaisirListeQuestions().charger_question_QCM(themes.getNom());
         themes.SaisirListeQuestions().charger_Question_VF(themes.getNom());
         themes.SaisirListeQuestions().charger_question_RC(themes.getNom());
@@ -211,8 +224,8 @@ public class fonctionnalitees {
         frame.revalidate();
     }
 
-    public void SetQuestionLabel(int niveau){
-        String ListeQuestion = "<html>"; //stackoverflow
+    public void SetQuestionLabel(int niveau){ //affichage de la liste des questions pour le theme et le niveau choisi
+        String ListeQuestion = "<html>"; //permet le retour a la ligne dans un label
 
         for (int i=0; i<themes.SaisirListeQuestions().GetListeQuestion().size(); i++) {
             if (themes.SaisirListeQuestions().SelectionnerQuestion(i).getLevel() == niveau) {

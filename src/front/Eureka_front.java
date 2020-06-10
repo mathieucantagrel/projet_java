@@ -579,7 +579,6 @@ public class Eureka_front implements Cloneable{
 
         this.f.setContentPane(AffichageScorePhase1);
         this.f.revalidate();
-
     }
 
     public String AffichageChrono(int i, ArrayList<Joueur> AffichageScoreList){
