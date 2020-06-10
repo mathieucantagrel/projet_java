@@ -53,7 +53,7 @@ public class Eureka_front implements Cloneable {
     private JLabel QuestionRC;
     private JButton ValidRCButton;
     private JTextArea ReponseText;
-    private JPanel Descrition1;
+    private JPanel Description1;
     private JPanel Description2;
     private JPanel Description3;
     private JLabel Level1;
@@ -707,8 +707,8 @@ public class Eureka_front implements Cloneable {
         gbc.weightx = 1.0;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         QCMJpanel.add(Proposition1Button, gbc);
-        Descrition1 = new JPanel();
-        Descrition1.setLayout(new GridBagLayout());
+        Description1 = new JPanel();
+        Description1.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -716,7 +716,7 @@ public class Eureka_front implements Cloneable {
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
-        QCMJpanel.add(Descrition1, gbc);
+        QCMJpanel.add(Description1, gbc);
         Level1 = new JLabel();
         Level1.setText("Label");
         gbc = new GridBagConstraints();
@@ -724,7 +724,7 @@ public class Eureka_front implements Cloneable {
         gbc.gridy = 0;
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.WEST;
-        Descrition1.add(Level1, gbc);
+        Description1.add(Level1, gbc);
         Theme1 = new JLabel();
         Theme1.setText("Label");
         gbc = new GridBagConstraints();
@@ -732,7 +732,7 @@ public class Eureka_front implements Cloneable {
         gbc.gridy = 1;
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.WEST;
-        Descrition1.add(Theme1, gbc);
+        Description1.add(Theme1, gbc);
         Joueur1 = new JLabel();
         Joueur1.setText("Label");
         gbc = new GridBagConstraints();
@@ -740,7 +740,7 @@ public class Eureka_front implements Cloneable {
         gbc.gridy = 0;
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.WEST;
-        Descrition1.add(Joueur1, gbc);
+        Description1.add(Joueur1, gbc);
         Proposition2Button = new JButton();
         Proposition2Button.setText("Button");
         gbc = new GridBagConstraints();
