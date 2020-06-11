@@ -6,39 +6,39 @@ public class Question <T> {
     private static AtomicInteger id = new AtomicInteger(0);
     private final int numero;
     private int level;
-    private T type;
+    private T enonce;
 
     public Question(int level, T enoncee) {
         this.numero = id.incrementAndGet();
         this.level = level;
-        this.type = enoncee;
+        this.enonce = enoncee;
     }
 
     public int getLevel() { return level; }
 
     public void setLevel(int level) { this.level = level; }
 
-    public T getType() { return this.type; }
+    public T getEnonce() { return this.enonce; }
 
-    public void setType(T type) { this.type = type; }
+    public void setEnonce(T enonce) { this.enonce = enonce; }
 
-    public QCM QCMtype() { return (QCM)this.type; }
-    public VF VFtype() { return (VF)this.type; }
-    public RC RCtype() { return (RC)this.type; }
+    public QCM QCMtype() { return (QCM)this.enonce; }
+    public VF VFtype() { return (VF)this.enonce; }
+    public RC RCtype() { return (RC)this.enonce; }
 
     public void Afficher()
     {
         System.out.println("Level : "+level+"");
-        System.out.println("Type de question : "+type);
+        System.out.println("Type de question : "+ enonce);
     }
-    public T saisir() { return this.type; }
+    public T saisir() { return this.enonce; }
 
     @Override
     public String toString() {
         return "Projet.Question{" +
                 "numero=" + numero +
                 ", level=" + level +
-                ", type=" + type.toString() +
+                ", type=" + enonce.toString() +
                 '}';
     }
 }
