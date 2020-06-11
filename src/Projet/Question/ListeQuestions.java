@@ -50,7 +50,7 @@ public class ListeQuestions <T> {
                 vf = new VF();
                 vf.setQuestion(bufferedReader.readLine());
                 vf.setReponse(Boolean.parseBoolean(bufferedReader.readLine()));
-                q = new Question(Integer.parseInt(string), vf);
+                q = new Question(Integer.parseInt(string), vf, nom_theme);
                 this.AjouterQuestion(q);
                 bufferedReader.readLine();
             }
@@ -79,7 +79,7 @@ public class ListeQuestions <T> {
                 proposition.add(bufferedReader.readLine());
                 proposition.add(bufferedReader.readLine());
                 qcm.setProposition(proposition);
-                q = new Question(Integer.parseInt(string), qcm);
+                q = new Question(Integer.parseInt(string), qcm, nom_theme);
                 this.AjouterQuestion(q);
                 bufferedReader.readLine();
             }
@@ -105,7 +105,7 @@ public class ListeQuestions <T> {
                 rc = new RC();
                 rc.setQuestion(bufferedReader.readLine());
                 rc.setReponse(bufferedReader.readLine());
-                q = new Question(Integer.parseInt(string), rc);
+                q = new Question(Integer.parseInt(string), rc, nom_theme);
                 this.AjouterQuestion(q);
                 bufferedReader.readLine();
             }

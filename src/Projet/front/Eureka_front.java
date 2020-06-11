@@ -36,6 +36,7 @@ public class Eureka_front implements Cloneable {
     private static int Milisecondes = 0; //milisecondes du chrono
     private static boolean state = true;
     private static int[] Chrono = new int[3];
+    private int nbQuestion = 0;
 
     //GRAPHISME
     private JFrame f;
@@ -188,6 +189,8 @@ public class Eureka_front implements Cloneable {
                 liste_candidat.get(2).setNom(JoueurtextArea3.getText());
                 liste_candidat.get(3).setNom(JoueurtextArea4.getText());
 
+                Collections.shuffle(liste_candidat);
+
                 reload_display_select_theme();
 
             }
@@ -199,12 +202,8 @@ public class Eureka_front implements Cloneable {
                 if (phase == 1) {
                     afficher_bonne_question(indexTheme);
                 } else if (phase == 3) {
-                    for (int index = 0; index < liste_theme.size(); index++) {
-                        if (liste_theme.get(index).getNom().equals(Phase3ListeThemes.get(0).getNom())) {
-                            afficher_bonne_question(index);
-                            break;
-                        }
-                    }
+                    Collections.shuffle(liste_theme);
+                    afficher_bonne_question(0);
                 }
 
                 indexTheme++;
@@ -280,9 +279,9 @@ public class Eureka_front implements Cloneable {
 
             if (phase == 1) {
                 num_candidat %= 4;
-                niveauQuestion++;
+                nbQuestion++;
 
-                if (niveauQuestion == 4) { //si chaque joueur a eu 1 question de chaque difficulté
+                if (nbQuestion == 4) {
                     phase_de_jeu(); //passage a la phase suivante
                     return;
                 }
@@ -294,15 +293,13 @@ public class Eureka_front implements Cloneable {
                 this.NomJoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
             } else if (phase == 3) {
                 num_candidat %= 2;
-                niveauQuestion++;
-                if (niveauQuestion == 4) {
-                    niveauQuestion = 1;
-                    Phase3ListeThemes.remove(0);
-                }
-                if (Phase3ListeThemes.size() == 0) {
+                nbQuestion++;
+
+                System.out.println(nbQuestion);
+                if (nbQuestion >= 4) {
                     phase_de_jeu();
-                    return;
                 }
+
                 this.JoueurLabel.setText(liste_candidat.get(num_candidat).getNom());
             }
         }
@@ -359,7 +356,10 @@ public class Eureka_front implements Cloneable {
         liste_candidat.add(2, liste_player.Selectionner_Joueur());
         liste_candidat.add(3, liste_player.Selectionner_Joueur());
 
-        Collections.shuffle(liste_candidat);
+        for (Themes th : this.liste_theme) {
+            System.out.println("\n\n" + th.getNom());
+            th.SaisirListeQuestions().AfficherListe();
+        }
     }
 
     public void phase_de_jeu() //passage a la phase suivante
@@ -371,7 +371,8 @@ public class Eureka_front implements Cloneable {
             num_candidat = -1;
             FinPhase(); //affichage des scores
         } else if (phase == 3) {
-            niveauQuestion = 1;
+            niveauQuestion = 3;
+            nbQuestion = 0;
             scoreQuestion = 5;
             num_candidat = -1;
             FinPhase(); //affichage des scores
