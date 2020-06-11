@@ -231,11 +231,6 @@ public class Eureka_front implements Cloneable {
                     {
                         Phase3ListeThemes.add(liste_theme.get(i));
                     }
-
-                    for (Themes th : Phase3ListeThemes)
-                    {
-                        System.out.println(th.getNom());
-                    }
                 }
                 reload_display_select_theme();
             }
@@ -408,7 +403,6 @@ public class Eureka_front implements Cloneable {
         Random rd = new Random();
         int nb = 0;
         if (phase == 1 || phase == 3) {
-            System.out.println(this.liste_theme.get(n).getNom());
             do {
                 nb = rd.nextInt(this.liste_theme.get(n).SaisirListeQuestions().GetListeQuestion().size());
             } while (this.liste_theme.get(n).SaisirListeQuestions().SelectionnerQuestion(nb).getLevel() != niveauQuestion);
