@@ -7,11 +7,13 @@ public class Question <T> {
     private final int numero;
     private int level;
     private T enonce;
+    private String theme;
 
-    public Question(int level, T enoncee) {
+    public Question(int level, T enoncee, String theme) {
         this.numero = id.incrementAndGet();
         this.level = level;
         this.enonce = enoncee;
+        this.theme = theme;
     }
 
     public int getLevel() { return level; }
