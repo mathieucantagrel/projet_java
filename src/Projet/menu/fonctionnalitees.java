@@ -279,7 +279,7 @@ public class fonctionnalitees {
         gbc.fill = GridBagConstraints.BOTH;
         panel1.add(Menu, gbc);
         lancerLeJeuButton = new JButton();
-        lancerLeJeuButton.setText("lancer le jeu");
+        lancerLeJeuButton.setText("Lancer une nouvelle partie");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 1;

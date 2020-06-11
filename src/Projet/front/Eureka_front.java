@@ -53,7 +53,7 @@ public class Eureka_front implements Cloneable {
     private JButton Faux;
     private JLabel QuestionRC;
     private JButton ValidRCButton;
-    private JTextArea ReponseText;
+    private JTextField ReponseText;
     private JPanel Description1;
     private JPanel Description2;
     private JPanel Description3;
@@ -67,10 +67,10 @@ public class Eureka_front implements Cloneable {
     private JLabel Theme3;
     private JLabel Joueur3;
     private JPanel EnterPseudoJpanel;
-    private JTextArea JoueurtextArea1;
-    private JTextArea JoueurtextArea2;
-    private JTextArea JoueurtextArea3;
-    private JTextArea JoueurtextArea4;
+    private JTextField JoueurtextArea1;
+    private JTextField JoueurtextArea2;
+    private JTextField JoueurtextArea3;
+    private JTextField JoueurtextArea4;
     private JButton validerButton;
     private JComboBox ListTheme;
     private JLabel JoueurLabel;
@@ -216,18 +216,14 @@ public class Eureka_front implements Cloneable {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (phase == 2)
-                {
+                if (phase == 2) {
                     Phase2ListeThemes = Selectionner6Themes();
-                }
-                else if (phase == 3)
-                {
+                } else if (phase == 3) {
                     Phase3ListeThemes = new ArrayList<>();
 
                     Collections.shuffle(liste_theme);
 
-                    for (int i = 0; i < 3; i++)
-                    {
+                    for (int i = 0; i < 3; i++) {
                         Phase3ListeThemes.add(liste_theme.get(i));
                     }
                 }
@@ -663,8 +659,7 @@ public class Eureka_front implements Cloneable {
         });
     }
 
-    public ArrayList<Themes> Selectionner6Themes()
-    {
+    public ArrayList<Themes> Selectionner6Themes() {
         Phase2ListeThemes = new ArrayList<>();
 
         Collections.shuffle(liste_theme); //randomzation des themes
@@ -725,19 +720,11 @@ public class Eureka_front implements Cloneable {
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.gridwidth = 2;
+        gbc.gridwidth = 4;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         QCMJpanel.add(Description1, gbc);
-        Level1 = new JLabel();
-        Level1.setText("Label");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
-        Description1.add(Level1, gbc);
         Theme1 = new JLabel();
         Theme1.setText("Label");
         gbc = new GridBagConstraints();
@@ -746,14 +733,29 @@ public class Eureka_front implements Cloneable {
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.WEST;
         Description1.add(Theme1, gbc);
+        final JLabel label1 = new JLabel();
+        label1.setText("Joueur : ");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        Description1.add(label1, gbc);
         Joueur1 = new JLabel();
         Joueur1.setText("Label");
         gbc = new GridBagConstraints();
-        gbc.gridx = 2;
+        gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.WEST;
         Description1.add(Joueur1, gbc);
+        Level1 = new JLabel();
+        Level1.setText("Label");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.WEST;
+        Description1.add(Level1, gbc);
         Proposition2Button = new JButton();
         Proposition2Button.setText("Button");
         gbc = new GridBagConstraints();
@@ -813,22 +815,6 @@ public class Eureka_front implements Cloneable {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         VFJpanel.add(Description2, gbc);
-        Level2 = new JLabel();
-        Level2.setText("Label");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
-        Description2.add(Level2, gbc);
-        Joueur2 = new JLabel();
-        Joueur2.setText("Label");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
-        Description2.add(Joueur2, gbc);
         Theme2 = new JLabel();
         Theme2.setText("Label");
         gbc = new GridBagConstraints();
@@ -837,6 +823,29 @@ public class Eureka_front implements Cloneable {
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.WEST;
         Description2.add(Theme2, gbc);
+        final JLabel label2 = new JLabel();
+        label2.setText("Joueur : ");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        Description2.add(label2, gbc);
+        Joueur2 = new JLabel();
+        Joueur2.setText("Label");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.WEST;
+        Description2.add(Joueur2, gbc);
+        Level2 = new JLabel();
+        Level2.setText("Label");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.WEST;
+        Description2.add(Level2, gbc);
         RCJpanel = new JPanel();
         RCJpanel.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
@@ -846,45 +855,15 @@ public class Eureka_front implements Cloneable {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         JpanelJeux.add(RCJpanel, gbc);
-        QuestionRC = new JLabel();
-        QuestionRC.setText("Label");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 1.0;
-        RCJpanel.add(QuestionRC, gbc);
-        ValidRCButton = new JButton();
-        ValidRCButton.setText("Valider");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.weightx = 1.0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        RCJpanel.add(ValidRCButton, gbc);
         Description3 = new JPanel();
         Description3.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 1.0;
-        gbc.fill = GridBagConstraints.BOTH;
+        gbc.anchor = GridBagConstraints.NORTH;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         RCJpanel.add(Description3, gbc);
-        Level3 = new JLabel();
-        Level3.setText("Label");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
-        Description3.add(Level3, gbc);
-        Joueur3 = new JLabel();
-        Joueur3.setText("Label");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
-        Description3.add(Joueur3, gbc);
         Theme3 = new JLabel();
         Theme3.setText("Label");
         gbc = new GridBagConstraints();
@@ -893,16 +872,79 @@ public class Eureka_front implements Cloneable {
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.WEST;
         Description3.add(Theme3, gbc);
-        ReponseText = new JTextArea();
+        final JLabel label3 = new JLabel();
+        label3.setText("Joueur : ");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        Description3.add(label3, gbc);
+        Joueur3 = new JLabel();
+        Joueur3.setText("Label");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.WEST;
+        Description3.add(Joueur3, gbc);
+        Level3 = new JLabel();
+        Level3.setText("Label");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.WEST;
+        Description3.add(Level3, gbc);
+        final JPanel panel1 = new JPanel();
+        panel1.setLayout(new GridBagLayout());
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        RCJpanel.add(panel1, gbc);
+        QuestionRC = new JLabel();
+        QuestionRC.setText("Label");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 1.0;
+        panel1.add(QuestionRC, gbc);
+        final JPanel spacer1 = new JPanel();
+        gbc = new GridBagConstraints();
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        panel1.add(spacer1, gbc);
+        ReponseText = new JTextField();
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
         gbc.ipadx = 500;
         gbc.ipady = 5;
-        RCJpanel.add(ReponseText, gbc);
+        panel1.add(ReponseText, gbc);
+        final JPanel spacer2 = new JPanel();
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.VERTICAL;
+        panel1.add(spacer2, gbc);
+        final JPanel spacer3 = new JPanel();
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.fill = GridBagConstraints.VERTICAL;
+        RCJpanel.add(spacer3, gbc);
+        ValidRCButton = new JButton();
+        ValidRCButton.setText("Valider");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.weightx = 1.0;
+        gbc.anchor = GridBagConstraints.SOUTH;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        RCJpanel.add(ValidRCButton, gbc);
         EnterPseudoJpanel = new JPanel();
         EnterPseudoJpanel.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
@@ -912,7 +954,7 @@ public class Eureka_front implements Cloneable {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         JpanelJeux.add(EnterPseudoJpanel, gbc);
-        JoueurtextArea1 = new JTextArea();
+        JoueurtextArea1 = new JTextField();
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 0;
@@ -920,7 +962,7 @@ public class Eureka_front implements Cloneable {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         EnterPseudoJpanel.add(JoueurtextArea1, gbc);
-        JoueurtextArea2 = new JTextArea();
+        JoueurtextArea2 = new JTextField();
         gbc = new GridBagConstraints();
         gbc.gridx = 3;
         gbc.gridy = 0;
@@ -928,7 +970,7 @@ public class Eureka_front implements Cloneable {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         EnterPseudoJpanel.add(JoueurtextArea2, gbc);
-        JoueurtextArea3 = new JTextArea();
+        JoueurtextArea3 = new JTextField();
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 1;
@@ -936,7 +978,7 @@ public class Eureka_front implements Cloneable {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         EnterPseudoJpanel.add(JoueurtextArea3, gbc);
-        JoueurtextArea4 = new JTextArea();
+        JoueurtextArea4 = new JTextField();
         gbc = new GridBagConstraints();
         gbc.gridx = 3;
         gbc.gridy = 1;
@@ -944,38 +986,38 @@ public class Eureka_front implements Cloneable {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         EnterPseudoJpanel.add(JoueurtextArea4, gbc);
-        final JLabel label1 = new JLabel();
-        label1.setText("Joueur 1 : ");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
-        EnterPseudoJpanel.add(label1, gbc);
-        final JLabel label2 = new JLabel();
-        label2.setText("Joueur 3 : ");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
-        EnterPseudoJpanel.add(label2, gbc);
-        final JLabel label3 = new JLabel();
-        label3.setText("Joueur 2 :");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
-        EnterPseudoJpanel.add(label3, gbc);
         final JLabel label4 = new JLabel();
-        label4.setText("Joueur 4 : ");
+        label4.setText("Joueur 1 : ");
         gbc = new GridBagConstraints();
-        gbc.gridx = 2;
-        gbc.gridy = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.WEST;
         EnterPseudoJpanel.add(label4, gbc);
+        final JLabel label5 = new JLabel();
+        label5.setText("Joueur 3 : ");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.WEST;
+        EnterPseudoJpanel.add(label5, gbc);
+        final JLabel label6 = new JLabel();
+        label6.setText("Joueur 2 :");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.WEST;
+        EnterPseudoJpanel.add(label6, gbc);
+        final JLabel label7 = new JLabel();
+        label7.setText("Joueur 4 : ");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 2;
+        gbc.gridy = 1;
+        gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.WEST;
+        EnterPseudoJpanel.add(label7, gbc);
         validerButton = new JButton();
         validerButton.setText("Valider");
         gbc = new GridBagConstraints();
@@ -1017,7 +1059,6 @@ public class Eureka_front implements Cloneable {
         gbc.gridy = 1;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
         SelectThemeJpanel.add(TempsPhase1Et3Label, gbc);
         Phase2SelectThemeJPanel = new JPanel();
         Phase2SelectThemeJPanel.setLayout(new GridBagLayout());
@@ -1035,7 +1076,6 @@ public class Eureka_front implements Cloneable {
         gbc.gridy = 0;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
         Phase2SelectThemeJPanel.add(NomJoueurLabel, gbc);
         ValiderThemePhase2Button = new JButton();
         ValiderThemePhase2Button.setText("Valider");
@@ -1052,7 +1092,6 @@ public class Eureka_front implements Cloneable {
         gbc.gridy = 2;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         Phase2SelectThemeJPanel.add(ChoixThemePhase2ComboBox, gbc);
         TempsPhase2Label = new JLabel();
@@ -1062,7 +1101,6 @@ public class Eureka_front implements Cloneable {
         gbc.gridy = 1;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
         Phase2SelectThemeJPanel.add(TempsPhase2Label, gbc);
         AffichageScorePhase1 = new JPanel();
         AffichageScorePhase1.setLayout(new GridBagLayout());
@@ -1075,14 +1113,13 @@ public class Eureka_front implements Cloneable {
         gbc.fill = GridBagConstraints.BOTH;
         JpanelJeux.add(AffichageScorePhase1, gbc);
         AffichageScoreLabel = new JLabel();
-        AffichageScoreLabel.setText("tableau des scores");
+        AffichageScoreLabel.setText("Tableau des Scores");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 3;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
         AffichageScorePhase1.add(AffichageScoreLabel, gbc);
         NomPremierLabel = new JLabel();
         NomPremierLabel.setText("Label");
