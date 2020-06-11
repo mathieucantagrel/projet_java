@@ -297,7 +297,7 @@ public class fonctionnalitees {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         Menu.add(afficherLesThemesButton, gbc);
         final JLabel label1 = new JLabel();
-        label1.setText("Projet.menu");
+        label1.setText("Menu");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
