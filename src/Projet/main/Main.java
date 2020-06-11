@@ -11,7 +11,5 @@ public class Main {
     }
 }
 
-//TODO classe question : attribut theme | renommer tyoe en enonce | afficher question en fonciton des theme
-//TODO classe theme ; methode SelectionnerCinqTheme
+//TODO classe question : afficher réponse de la question
 //TODO implementer interface Phase
-//TODO classe joueur : methode MAJScore
