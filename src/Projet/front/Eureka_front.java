@@ -1248,7 +1248,4 @@ public class Eureka_front implements Cloneable {
         return JpanelJeux;
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }
