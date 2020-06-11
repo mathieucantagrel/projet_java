@@ -29,8 +29,7 @@ public class EnsJoueurs {
         }
     }
     public void Afficher(){
-        for (Joueur player:liste_joueur
-             ) {
+        for (Joueur player:liste_joueur) {
             System.out.println(player.getNom());
         }
     }
