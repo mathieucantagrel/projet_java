@@ -23,7 +23,6 @@ public class Eureka_front implements Cloneable {
     private ArrayList<Joueur> liste_candidat;// liste de 4 Joueurs jouant au jeux
     private Joueur joueur_en_cours;// Le joueur répondant à la question
     private int num_candidat = -1;// Numéro du joueur en cours (1,2,3 ou 4). Peut être mis en format random pour
-    //TODO : Mettre un ordre aléatoire de chaque joueur pour le passage.
     private int indexTheme = 0; //index du theme a choisir dans la liste de themes
     private int niveauQuestion = 1; //niveau de la question qui va etre posee
     private int phase = 1;// variable de Phase.
@@ -187,6 +186,8 @@ public class Eureka_front implements Cloneable {
                 liste_candidat.get(1).setNom(JoueurtextArea2.getText());
                 liste_candidat.get(2).setNom(JoueurtextArea3.getText());
                 liste_candidat.get(3).setNom(JoueurtextArea4.getText());
+
+                Collections.shuffle(liste_candidat);
 
                 reload_display_select_theme();
 
@@ -368,8 +369,6 @@ public class Eureka_front implements Cloneable {
         liste_candidat.add(1, liste_player.Selectionner_Joueur());
         liste_candidat.add(2, liste_player.Selectionner_Joueur());
         liste_candidat.add(3, liste_player.Selectionner_Joueur());
-
-        Collections.shuffle(liste_candidat);
     }
 
     public void phase_de_jeu() //passage a la phase suivante
