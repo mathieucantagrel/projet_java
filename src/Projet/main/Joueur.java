@@ -5,7 +5,7 @@ import Projet.Question.ListeQuestions;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Joueur {
-    private static AtomicInteger id = new AtomicInteger(0);
+    private static AtomicInteger id = new AtomicInteger(10);
     private int numero;
     private String nom;
     private int score;
@@ -13,7 +13,7 @@ public class Joueur {
     private int[] Chrono = new int[3];
 
     public Joueur(String nom) {
-        this.numero = id.incrementAndGet();
+        this.numero = (id.incrementAndGet())*10;
         this.nom = nom;
         this.score = 0;
         this.etat = "";
