@@ -27,10 +27,18 @@ public class Joueur {
     public void setScore(int score) { this.score = score; }
     public String getEtat() { return etat; }
     public void setEtat(String etat) { this.etat = etat; }
-    public void ajouter_point(int score){this.score+=score;}
     public Joueur saisir(){return this;}
-    public void MAJScore(int score){this.setScore(score);}
     public void ChangerEtat(String etat){this.setEtat(etat);}
+
+    public void MAJScore(int phase)
+    {
+        if(phase == 1)
+        { this.score += 2; }
+        else if(phase == 2)
+        { this.score += 3; }
+        else
+        { this.score += 5; }
+    }
 
     public int[] getChrono() {
         return Chrono;

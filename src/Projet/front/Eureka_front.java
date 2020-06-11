@@ -113,7 +113,7 @@ public class Eureka_front implements Cloneable {
             public void actionPerformed(ActionEvent e) {// verification de reponse pour question RC
 
                 if (ReponseText.getText().toLowerCase().equals(reponse.toLowerCase())) {
-                    liste_candidat.get(num_candidat).ajouter_point(scoreQuestion);
+                    liste_candidat.get(num_candidat).MAJScore(phase);
                 }
                 ReponseText.setText("");
 
@@ -127,7 +127,7 @@ public class Eureka_front implements Cloneable {
                 boolean vrai = true;
 
                 if (reponse.equals(String.valueOf(vrai))) {
-                    liste_candidat.get(num_candidat).ajouter_point(scoreQuestion);
+                    liste_candidat.get(num_candidat).MAJScore(phase);
                 }
 
 
@@ -141,7 +141,7 @@ public class Eureka_front implements Cloneable {
                 boolean faux = false;
 
                 if (reponse.equals(String.valueOf(faux))) {
-                    liste_candidat.get(num_candidat).ajouter_point(scoreQuestion);
+                    liste_candidat.get(num_candidat).MAJScore(phase);
                 }
 
                 reload_display_select_theme();
@@ -153,7 +153,7 @@ public class Eureka_front implements Cloneable {
             public void actionPerformed(ActionEvent e) {
 
                 if (Proposition1Button.getText().equals(reponse)) {
-                    liste_candidat.get(num_candidat).ajouter_point(scoreQuestion);
+                    liste_candidat.get(num_candidat).MAJScore(phase);
                 }
                 reload_display_select_theme();
             }
@@ -163,7 +163,7 @@ public class Eureka_front implements Cloneable {
             public void actionPerformed(ActionEvent e) {
 
                 if (Proposition2Button.getText().equals(reponse)) {
-                    liste_candidat.get(num_candidat).ajouter_point(scoreQuestion);
+                    liste_candidat.get(num_candidat).MAJScore(phase);
                 }
                 reload_display_select_theme();
 
@@ -174,7 +174,7 @@ public class Eureka_front implements Cloneable {
             public void actionPerformed(ActionEvent e) {
 
                 if (Proposition3Button.getText().equals(reponse)) {
-                    liste_candidat.get(num_candidat).ajouter_point(scoreQuestion);
+                    liste_candidat.get(num_candidat).MAJScore(phase);
                 }
                 reload_display_select_theme();
 
@@ -523,9 +523,9 @@ public class Eureka_front implements Cloneable {
                 NomPremierLabel.setText(AffichageScoreList.get(i).getNom());
                 ScorePremierLabel.setText(String.valueOf(AffichageScoreList.get(i).getScore()));
                 TempsJoueur1Label.setText(AffichageChrono(i, AffichageScoreList));
-                if (phase==4){
-                    for (int j=0; j<liste_candidat.size(); j++){
-                        if (liste_candidat.get(j).getNom().equals(AffichageScoreList.get(i).getNom())){
+                if (phase == 4) {
+                    for (int j = 0; j < liste_candidat.size(); j++) {
+                        if (liste_candidat.get(j).getNom().equals(AffichageScoreList.get(i).getNom())) {
                             liste_candidat.get(j).setEtat("Gagnant");
                         }
                     }
@@ -895,6 +895,7 @@ public class Eureka_front implements Cloneable {
         gbc.gridy = 2;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.WEST;
         gbc.ipadx = 500;
         gbc.ipady = 5;
         RCJpanel.add(ReponseText, gbc);
