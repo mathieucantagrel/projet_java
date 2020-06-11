@@ -217,31 +217,26 @@ public class Eureka_front implements Cloneable {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (phase == 2) {
-
-                    Phase2ListeThemes = new ArrayList<>();
-
-                    Collections.shuffle(liste_theme); //randomzation des themes
-
-                    for (int i = 0; i < 6; i++) { //ajout des 6 themes dans la nouvelle liste et dans la ComboBox
-                        Phase2ListeThemes.add(liste_theme.get(i));
-                        ChoixThemePhase2ComboBox.addItem(liste_theme.get(i).getNom());
-                    }
-                } else if (phase == 3) {
-
+                if (phase == 2)
+                {
+                    Phase2ListeThemes = Selectionner6Themes();
+                }
+                else if (phase == 3)
+                {
                     Phase3ListeThemes = new ArrayList<>();
 
                     Collections.shuffle(liste_theme);
 
-                    for (int i = 0; i < 3; i++) {
+                    for (int i = 0; i < 3; i++)
+                    {
                         Phase3ListeThemes.add(liste_theme.get(i));
                     }
 
-                    for (Themes th : Phase3ListeThemes) {
+                    for (Themes th : Phase3ListeThemes)
+                    {
                         System.out.println(th.getNom());
                     }
                 }
-
                 reload_display_select_theme();
             }
         });
@@ -671,6 +666,20 @@ public class Eureka_front implements Cloneable {
                 fonctionnalitees fonctionnalitees = new fonctionnalitees(); //ouvre le menu
             }
         });
+    }
+
+    public ArrayList<Themes> Selectionner6Themes()
+    {
+        Phase2ListeThemes = new ArrayList<>();
+
+        Collections.shuffle(liste_theme); //randomzation des themes
+
+        for (int i = 0; i < 6; i++) { //ajout des 6 themes dans la nouvelle liste et dans la ComboBox
+            Phase2ListeThemes.add(liste_theme.get(i));
+            ChoixThemePhase2ComboBox.addItem(liste_theme.get(i).getNom());
+        }
+
+        return Phase2ListeThemes;
     }
 
     {
