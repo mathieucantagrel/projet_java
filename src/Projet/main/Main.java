@@ -11,6 +11,5 @@ public class Main {
     }
 }
 
-//TODO classe question : attribut theme | afficher réponse de la question
-//TODO classe theme ; methode SelectionnerSixTheme
+//TODO classe question : afficher réponse de la question
 //TODO implementer interface Phase
