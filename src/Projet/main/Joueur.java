@@ -9,7 +9,7 @@ public class Joueur {
     private int numero;
     private String nom;
     private int score;
-    private String etat;// etat en string pour les vérifier par equals. et pratique pour faire des comparators(peut être utile dans le dev de l'app)
+    private String etat;
     private int[] Chrono = new int[3];
 
     public Joueur(String nom) {
@@ -26,7 +26,7 @@ public class Joueur {
     public int getScore() { return score; }
     public void setScore(int score) { this.score = score; }
     public String getEtat() { return etat; }
-    protected void setEtat(String etat) { this.etat = etat; }
+    public void setEtat(String etat) { this.etat = etat; }
     public void ajouter_point(int score){this.score+=score;}
     public Joueur saisir(){return this;}
     public void MAJScore(int score){this.setScore(score);}

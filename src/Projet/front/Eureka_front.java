@@ -523,6 +523,13 @@ public class Eureka_front implements Cloneable {
                 NomPremierLabel.setText(AffichageScoreList.get(i).getNom());
                 ScorePremierLabel.setText(String.valueOf(AffichageScoreList.get(i).getScore()));
                 TempsJoueur1Label.setText(AffichageChrono(i, AffichageScoreList));
+                if (phase==4){
+                    for (int j=0; j<liste_candidat.size(); j++){
+                        if (liste_candidat.get(j).getNom().equals(AffichageScoreList.get(i).getNom())){
+                            liste_candidat.get(j).setEtat("Gagnant");
+                        }
+                    }
+                }
             } else if (i == AffichageScoreList.size() - 2) { //deuxieme joueur
                 NomDeuxiemeLabel.setText(AffichageScoreList.get(i).getNom());
                 ScoreDeuxiemeLabel.setText(String.valueOf(AffichageScoreList.get(i).getScore()));
@@ -534,6 +541,7 @@ public class Eureka_front implements Cloneable {
                 if (phase == 3) { //si passage a la phase 3 -> retirer joueur de la liste
                     for (int j = 0; j < liste_candidat.size(); j++) {
                         if (liste_candidat.get(j).getNom().equals(AffichageScoreList.get(i).getNom())) {
+                            liste_candidat.get(i).setEtat("Elemine");
                             liste_candidat.remove(j);
                             break;
                         }
@@ -546,6 +554,7 @@ public class Eureka_front implements Cloneable {
 
                 for (int j = 0; j < liste_candidat.size(); j++) {
                     if (liste_candidat.get(j).getNom().equals(AffichageScoreList.get(i).getNom())) {
+                        liste_candidat.get(i).setEtat("Elemine");
                         liste_candidat.remove(j);
                         break;
                     }
